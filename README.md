@@ -7,3 +7,8 @@ This project implemented by LLAMA2. LLAMA has different models with different nu
 Following figure represent the output of this project.
 ![alt text](image-1.png)
 
+
+## Bill Extrctor
+This project used Gemini pro vision, to intrepret upload image and extract different part of it, then when the user ask any question, the model try to find related part of the image and asnwer to the question. 
+Following figure represent a sample uploaded bill and the answer of Gemini pro vision the the user question:
+![alt text](image.png)
