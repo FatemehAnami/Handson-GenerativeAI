@@ -12,7 +12,7 @@ model = genai.GenerativeModel("gemini-pro-vision")
 
 # function to load Gmini model
 def get_gemini_response(request, image, prompt):
-    response = model.generate_content([input, image[0], prompt])
+    response = model.generate_content([prompt, image[0], request])
     return response.text
 
 def input_image_details(uploaded_file):
@@ -40,7 +40,7 @@ if upload_file is not None :
     image = Image.open(upload_file)
     st.image(image, caption = "Uploaded Bill Image.", use_column_width = True)
 
-input = st.text_input("Enter your question about bill: ", key = "input")
+input_text = st.text_input("Enter your question about bill: ", key = "input")
 submit = st.button("Send")
 
 input_prompt = """
@@ -50,8 +50,7 @@ You are an expert in understanding Bills. We will upload an image and you will h
 # If submit botten clicked
 if submit :
     image_data = input_image_details(upload_file)
-    response = get_gemini_response(input_prompt, image_data, input)
+    response = get_gemini_response(input_text, image_data, input_prompt)
     st.subheader("The Response is: ")
     st.write(response)
 
-    
