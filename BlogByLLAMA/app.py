@@ -1,6 +1,10 @@
 import streamlit as st
 from langchain.prompts import PromptTemplate
 from langchain_community.llms import CTransformers
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
 
 def get_llama_response(input_text, number_of_words, blog_style):
     
@@ -9,7 +13,7 @@ def get_llama_response(input_text, number_of_words, blog_style):
     it will run the llama model with given variables and return the blog related to the template
     """
     # calling the llama 2 model
-    llm = CTransformers(model = "E:\iNeuron\GMINI\BlogByLLAMA\models\llama-2-7b-chat.ggmlv3.q4_0.bin",
+    llm = CTransformers(model = os.getenv("MODEL_ADDRESS"),
                         model_type = "llama",
                         config = {"max_new_tokens": 256,
                                   "temperature": 0.01}
